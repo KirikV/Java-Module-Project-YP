@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 class RaceLaMan {
@@ -10,7 +12,7 @@ class RaceLaMan {
         System.out.println("Введите 'Привет'");
         while (true) {
             String command = console.nextLine();
-            if (command.equals("Завершить")) {
+            if (command.equals("ФИНИШ")) {
                 System.out.println("Программа завершена! Спасибо, что зашли к нам на гонку!");
                 break;
             } else {
@@ -22,31 +24,37 @@ class RaceLaMan {
 
     private void executeCommand(String command) {
         if (command.equals("Привет")) {
-            System.out.println("Время назвать модели авто наших участников!");
-            System.out.println("Введите авто участника и его скорость");
+            System.out.println("Время назвать автомобили наших участников и их скорости!");
             executeCreate();
         }
     }
 
     private void executeCreate() {
         while (laMan.size() < 3) {
+            System.out.println("Введите авто участника");
             String name = console.nextLine();
+            System.out.println("Введите скорость участника");
             int speed = console.nextInt();
             console.nextLine();
-            laMan.add(new Auto(name, speed));
-            System.out.println("Давайте поприветствуем нашего участника на " + name + ", " +
-                    "его скорость равна " + speed + " км/ч");
+            if (speed < 0 || speed > 250) {
+                System.out.println("Допустимая скорость участников не должна превышать 250 км/ч");
+            } else {
+                laMan.add(new Auto(name, speed));
+                System.out.println("Давайте поприветствуем нашего участника на " + name + ", " +
+                        "его скорость равна " + speed + " км/ч");
+            }
         }
         System.out.println("Отлично, для начала гонки введите 'СТАРТ'");
-        compareSpeed();
+        compareDist();
     }
 
-    private void compareSpeed() {
+    private void compareDist() {
         String go = console.nextLine();
         if (go.equals("СТАРТ")) {
-            System.out.println("ГОНКА НАЧАЛАСЬ \nУПОРНАЯ БОРЬБА");
-        } else if (speed(0) > speed(1),speed(2)){
-            System.out.println();
+            System.out.println("ГОНКА НАЧАЛАСЬ ПОЗАДИ 24 КИЛОМЕТРА");
+            Collections.sort(laMan);
+            System.out.println(laMan);
+
 
         }
     }
