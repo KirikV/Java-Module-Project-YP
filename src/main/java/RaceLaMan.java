@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 class RaceLaMan {
@@ -53,7 +52,18 @@ class RaceLaMan {
         if (go.equals("СТАРТ")) {
             System.out.println("ГОНКА НАЧАЛАСЬ ПОЗАДИ 24 КИЛОМЕТРА");
             Collections.sort(laMan);
-            System.out.println(laMan);
+            if ((laMan.get(2).dist == laMan.get(1).dist) && (laMan.get(1).dist ==
+                    laMan.get(0).dist)) {
+                System.out.println("Победила дружба!\nВсе участники проехали одинаковое " +
+                        "расстояние");
+            } else if ((laMan.get(2).dist == laMan.get(1).dist) && (laMan.get(1).dist >
+                    laMan.get(0).dist)) {
+                System.out.println("Победили участники на " + laMan.get(2).name + " и на " +
+                        laMan.get(1).name);
+            } else {
+                System.out.println("Победил участник на " + laMan.get(2).name);
+            }
+            System.out.println("Спасибо за внимание!!!");
 
 
         }
