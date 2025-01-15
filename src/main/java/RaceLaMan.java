@@ -32,7 +32,7 @@ class RaceLaMan {
         while (laMan.size() < 3) {
             System.out.println("Введите авто участника");
             String name = console.nextLine();
-            System.out.println("Введите скорость участника");
+            System.out.println("Введите скорость участника (целое число)");
             int speed = console.nextInt();
             console.nextLine();
             if (speed < 0 || speed > 250) {
