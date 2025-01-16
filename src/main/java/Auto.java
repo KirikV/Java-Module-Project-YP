@@ -1,10 +1,10 @@
 public class Auto implements Comparable<Auto> {
 
     String name;
-    int speed;
-    int dist;
+    double speed;
+    double dist;
 
-    public Auto(String autoName, int speed) {
+    public Auto(String autoName, double speed) {
         this.speed = speed;
         this.name = autoName;
         this.dist = (this.speed * 24);
@@ -21,6 +21,6 @@ public class Auto implements Comparable<Auto> {
 
     @Override
     public int compareTo(Auto auto) {
-        return this.dist - auto.dist;
+        return (int) (this.dist - auto.dist);
     }
 }

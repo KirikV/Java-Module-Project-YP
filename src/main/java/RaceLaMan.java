@@ -32,15 +32,20 @@ class RaceLaMan {
         while (laMan.size() < 3) {
             System.out.println("Введите авто участника");
             String name = console.nextLine();
-            System.out.println("Введите скорость участника (целое число)");
-            int speed = console.nextInt();
+            System.out.println("Введите скорость участника");
+            while (!console.hasNextDouble()) {
+                System.out.println("Недопустимый знак, введите целое число");
+                console.nextLine();
+            }
+            double speed = console.nextDouble();
             console.nextLine();
             if (speed < 0 || speed > 250) {
-                System.out.println("Допустимая скорость участников не должна превышать 250 км/ч");
+                System.out.println("Допустимая скорость участников не должна превышать " +
+                        "250 км/ч");
             } else {
                 laMan.add(new Auto(name, speed));
-                System.out.println("Давайте поприветствуем нашего участника на " + name + ", " +
-                        "его скорость равна " + speed + " км/ч");
+                System.out.println("Давайте поприветствуем нашего участника на " + name + ", "
+                        + "его скорость равна " + speed + " км/ч");
             }
         }
         System.out.println("Отлично, для начала гонки введите 'СТАРТ'");
@@ -50,7 +55,7 @@ class RaceLaMan {
     private void compareDist() {
         String go = console.nextLine();
         if (go.equals("СТАРТ")) {
-            System.out.println("ГОНКА НАЧАЛАСЬ ПОЗАДИ 24 КИЛОМЕТРА");
+            System.out.println("ГОНКА НАЧАЛАСЬ \n*** \nПОЗАДИ 24 КИЛОМЕТРА");
             Collections.sort(laMan);
             if ((laMan.get(2).dist == laMan.get(1).dist) && (laMan.get(1).dist ==
                     laMan.get(0).dist)) {
@@ -64,8 +69,6 @@ class RaceLaMan {
                 System.out.println("Победил участник на " + laMan.get(2).name);
             }
             System.out.println("Спасибо за внимание!!!");
-
-
         }
     }
 }
