@@ -34,7 +34,7 @@ class RaceLaMan {
             String name = console.nextLine();
             System.out.println("Введите скорость участника");
             while (!console.hasNextDouble()) {
-                System.out.println("Недопустимый знак, введите целое число");
+                System.out.println("Недопустимый знак, введите число");
                 console.nextLine();
             }
             double speed = console.nextDouble();
